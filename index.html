@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HopeConnect – Community Support Platform</title>
+<style>
+:root{--bg:#F5F7FA;--card:#fff;--g:#00B074;--g2:#00C896;--gs:#E6F8F1;--i:#4F5BFF;--is:#ECEEFF;--t:#14202B;--m:#6B7785;--l:#E8ECF1;--r:#FF4D5E;--a:#FFA928;
+--sh:0 1px 2px rgba(20,32,43,.04),0 4px 12px rgba(20,32,43,.04),0 16px 32px rgba(20,32,43,.05)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter","SF Pro Display","Segoe UI",Roboto,system-ui,sans-serif;background:var(--bg);color:var(--t);min-height:100vh;padding-bottom:110px;-webkit-font-smoothing:antialiased}
+body::before,body::after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none}
+body::before{width:420px;height:420px;background:#7CE8C3;top:-120px;right:-100px}
+body::after{width:380px;height:380px;background:#A9B0FF;bottom:-120px;left:-100px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid rgba(79,91,255,.4);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.sos{background:linear-gradient(90deg,#FF4D5E,#FF7A59);color:#fff;font-size:13px;padding:8px 18px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;text-align:center}
+.sos button{background:#fff;color:#D92D40;border-radius:99px;padding:4px 12px;font-weight:700;font-size:12px}
+header{position:sticky;top:0;z-index:30;background:rgba(245,247,250,.72);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6)}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.03em}
+.logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--g),var(--i));display:grid;place-items:center;color:#fff;font-size:20px;box-shadow:0 8px 18px rgba(0,176,116,.3)}
+.brand small{display:block;font-size:11px;font-weight:500;color:var(--m);letter-spacing:0}
+.role{background:var(--card);border-radius:99px;padding:8px 14px;border:1px solid var(--l);font-weight:600;font-size:13px;box-shadow:var(--sh);max-width:190px}
+main{padding-top:10px}
+.view{display:none;animation:in .35s ease}.view.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.card{background:var(--card);border-radius:24px;padding:22px;box-shadow:var(--sh)}
+.hero{border-radius:32px;padding:40px 30px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(circle at 85% 15%,rgba(255,255,255,.28),transparent 45%),linear-gradient(135deg,#00B074,#00A3A3 55%,#4F5BFF);box-shadow:0 20px 40px rgba(0,176,116,.25)}
+.hero h1{font-size:clamp(32px,6vw,52px);letter-spacing:-.04em;line-height:1.05;max-width:560px;margin:14px 0 12px}
+.hero p{max-width:480px;opacity:.92;line-height:1.55}
+.chip{display:inline-block;background:rgba(255,255,255,.22);backdrop-filter:blur(10px);border-radius:99px;padding:6px 14px;font-size:12px;font-weight:600}
+.btn{border-radius:99px;padding:13px 24px;font-weight:700;font-size:14px;transition:transform .15s,box-shadow .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:active{transform:scale(.96)}
+.b1{background:linear-gradient(135deg,var(--g),var(--g2));color:#fff;box-shadow:0 8px 20px rgba(0,176,116,.32)}
+.b2{background:#fff;color:#0A7F55}
+.b3{background:var(--is);color:var(--i)}
+.b4{background:var(--t);color:#fff}
+.sm{padding:7px 14px;font-size:12px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g5{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+h2{font-size:26px;letter-spacing:-.03em;margin:30px 0 6px}h3{font-size:17px;letter-spacing:-.02em}
+.mut{color:var(--m);font-size:13.5px;line-height:1.5}
+.stat b{font-size:30px;letter-spacing:-.03em;display:block}
+.stat span{color:var(--m);font-size:13px}
+.cat{text-align:left;transition:transform .2s}.cat:hover{transform:translateY(-3px)}
+.ico{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font-size:22px;margin-bottom:12px}
+label{display:block;font-size:12.5px;font-weight:600;color:var(--m);margin:14px 0 6px}
+input,select,textarea{width:100%;background:#F2F5F9;border:2px solid transparent;border-radius:16px;padding:13px 16px;font-size:14px;outline:0;transition:.2s}
+input:focus,select:focus,textarea:focus{background:#fff;border-color:var(--g)}
+.pill{display:inline-block;border-radius:99px;padding:4px 11px;font-size:11.5px;font-weight:700}
+.p-g{background:var(--gs);color:#08855C}.p-a{background:#FFF3DC;color:#B26A00}.p-r{background:#FFE8EA;color:#D12F40}.p-i{background:var(--is);color:var(--i)}
+.item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;background:#F7F9FC;border-radius:18px;margin-top:10px;flex-wrap:wrap}
+.item p{font-size:12.5px;color:var(--m);margin-top:3px}
+.id{font-family:ui-monospace,Menlo,monospace;font-weight:700;color:var(--g);font-size:13px}
+.seg{display:flex;background:#EAEEF3;border-radius:99px;padding:4px;margin-bottom:6px}
+.seg button{flex:1;padding:10px;border-radius:99px;font-weight:600;font-size:13px;color:var(--m);transition:.2s}
+.seg .on{background:#fff;color:var(--t);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.amts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.amts button{padding:12px 4px;border-radius:16px;background:#F2F5F9;font-weight:700;font-size:14px;border:2px solid transparent}
+.amts .on{background:var(--gs);border-color:var(--g);color:#08855C}
+.stepper{display:flex;justify-content:space-between;position:relative;margin:30px 6px 10px}
+.stepper::before,.stepper i{content:"";position:absolute;top:15px;left:16px;height:4px;border-radius:4px;background:var(--l)}
+.stepper::before{right:16px}
+.stepper i{background:linear-gradient(90deg,var(--g),var(--i));transition:width .5s;width:var(--w,0)}
+.st{position:relative;text-align:center;width:25%;font-size:12px;color:var(--m);font-weight:600}
+.st u{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;border:3px solid var(--l);margin:0 auto 8px;text-decoration:none;font-weight:800;transition:.3s}
+.st.d u{background:var(--g);border-color:var(--g);color:#fff;box-shadow:0 6px 14px rgba(0,176,116,.35)}
+.st.d{color:var(--t)}
+.tbl{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+th{text-align:left;color:var(--m);font-weight:600;padding:10px;font-size:12px}td{padding:12px 10px;border-top:1px solid var(--l);vertical-align:middle}
+.bar{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:13px}
+.bar span:first-child{width:90px;color:var(--m)}.bar div{flex:1;height:12px;background:#EEF1F5;border-radius:9px;overflow:hidden}
+.bar div i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--g),var(--i));transition:width .6s}
+.dock{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:40;display:flex;gap:4px;padding:8px;background:rgba(255,255,255,.72);backdrop-filter:blur(28px) saturate(1.8);-webkit-backdrop-filter:blur(28px) saturate(1.8);border-radius:99px;border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 40px rgba(20,32,43,.16)}
+.dock button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-radius:99px;font-size:10.5px;font-weight:700;color:var(--m);transition:.25s;min-width:60px}
+.dock button b{font-size:19px;line-height:1}
+.dock .on{background:linear-gradient(135deg,var(--g),var(--g2));color:#fff;box-shadow:0 6px 16px rgba(0,176,116,.35)}
+#toasts{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:80;display:grid;gap:8px;width:min(92vw,360px)}
+.toast{background:rgba(20,32,43,.9);backdrop-filter:blur(14px);color:#fff;padding:13px 18px;border-radius:99px;font-size:13px;font-weight:600;text-align:center;animation:in .3s}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(20,32,43,.35);backdrop-filter:blur(10px);display:none;place-items:center;padding:18px}
+.modal.on{display:grid}.modal .card{width:min(420px,100%);animation:in .3s}
+.rc div{display:flex;justify-content:space-between;padding:8px 0;font-size:13.5px;border-bottom:1px dashed var(--l)}
+@media(max-width:520px){.dock button{padding:8px 9px;min-width:50px}.hero{padding:30px 22px}}
+@media print{body *{visibility:hidden}.rc,.rc *{visibility:visible}.rc{position:absolute;top:0;left:0;width:100%}}
+</style>
+</head>
+<body>
+<div id="toasts"></div>
+<div class="sos">🚨 Life-threatening emergency? Call 112 / 108 first. <button onclick="go('request');$('#rc').value='Emergency'">Request urgent help</button></div>
+<header><div class="wrap hd">
+ <div class="brand"><div class="logo">🤝</div><div>HopeConnect<small>Small help. Big change.</small></div></div>
+ <select class="role" id="role" aria-label="Switch role" onchange="setRole(this.value)">
+  <option value="seeker">👤 Support seeker</option><option value="ngo">🏢 NGO · Green Future</option><option value="volunteer">🙋 Volunteer · Rahul S.</option><option value="donor">❤️ Donor</option><option value="admin">⚙️ Admin</option>
+ </select>
+</div></header>
+
+<main class="wrap">
+<!-- HOME -->
+<section class="view on" id="v-home">
+ <div class="hero">
+  <span class="chip">Bhavna Trust College CEP · Mumbai</span>
+  <h1>Help finds its way home.</h1>
+  <p>HopeConnect links families in Deonar, Chembur and Greater Mumbai with verified NGOs, volunteers and donors.</p>
+  <div class="row" style="margin-top:24px"><button class="btn b2" onclick="go('request')">Get support</button><button class="btn b1" style="background:rgba(255,255,255,.2);box-shadow:none" onclick="go('donate')">Donate</button></div>
+ </div>
+ <div class="grid g4" style="margin-top:16px" id="stats"></div>
+ <h2>What do you need?</h2><p class="mut">Pick a category to start a request.</p>
+ <div class="grid g5" id="cats" style="margin-top:14px"></div>
+ <h2>Latest requests</h2>
+ <div id="recent"></div>
+</section>
+
+<!-- REQUEST -->
+<section class="view" id="v-request"><div style="max-width:620px;margin:20px auto 0" class="card">
+ <h2 style="margin-top:0">Ask for support</h2><p class="mut">Share what you need. A verified volunteer will follow up.</p>
+ <form onsubmit="submitReq(event)">
+  <label>Category</label><select id="rc" required><option value="">Choose a category</option></select>
+  <div class="grid g2" style="gap:0 14px"><div><label>Full name</label><input id="rn" required placeholder="Ramesh Kumar"></div>
+  <div><label>Phone</label><input id="rp" required type="tel" pattern="[0-9]{10}" title="10-digit mobile number" placeholder="10-digit mobile number"></div>
+  <div><label>Area</label><input id="rl" required placeholder="Deonar, Chembur…"></div>
+  <div><label>Urgency</label><select id="ru"><option>Low</option><option selected>Medium</option><option>High</option><option>Emergency</option></select></div></div>
+  <label>What do you need?</label><textarea id="rd" rows="4" required placeholder="Family size, medicines, class and subjects…"></textarea>
+  <p class="mut" style="margin:14px 0">🔒 Your contact details are shared only with the assigned NGO coordinator.</p>
+  <button class="btn b1" style="width:100%">Send request</button>
+ </form></div></section>
+
+<!-- TRACK -->
+<section class="view" id="v-track"><div style="max-width:700px;margin:20px auto 0">
+ <div class="card"><h2 style="margin-top:0">Track a request</h2><p class="mut">Enter your request ID, e.g. HC20261008.</p>
+  <div class="row" style="margin-top:14px;flex-wrap:nowrap"><input id="tid" placeholder="Request ID" style="text-transform:uppercase"><button class="btn b1" onclick="track($('#tid').value)">Track</button></div>
+  <div id="tlist"></div></div>
+ <div class="card" id="tres" style="margin-top:14px;display:none"></div></div></section>
+
+<!-- DONATE -->
+<section class="view" id="v-donate"><div class="grid g2" style="margin-top:20px;align-items:start">
+ <div class="card"><h2 style="margin-top:0">Make a difference</h2><p class="mut" style="margin-bottom:16px">Your gift funds food kits, medicines and school supplies.</p>
+  <div class="seg"><button class="on" id="dm" onclick="dType('m')">Money</button><button id="dk" onclick="dType('k')">In-kind</button></div>
+  <div id="fm"><label>Amount (₹)</label><div class="amts" id="amts"></div><input id="amt" type="number" min="1" value="1000">
+   <label>Payment</label><div class="seg"><button class="on" id="pu" onclick="pay('upi')">UPI</button><button id="pc" onclick="pay('card')">Card / Netbanking</button></div>
+   <p class="mut" id="upi" style="margin-top:8px">Pay to <b>donate@hopeconnect</b> <button class="pill p-i" onclick="navigator.clipboard&&navigator.clipboard.writeText('donate@hopeconnect');toast('UPI ID copied')">Copy</button></p>
+   <label>Name (optional)</label><input id="dn" placeholder="Your name"><label>Email (for 80G receipt)</label><input id="de" type="email" placeholder="you@email.com">
+   <button class="btn b1" style="width:100%;margin-top:18px" onclick="donate()">Complete contribution</button></div>
+  <div id="fk" style="display:none"><label>What are you giving?</label><select id="kt"><option>Meals / grocery kits</option><option>Books & stationery</option><option>Clothes / blankets</option><option>Medicines & first aid</option></select>
+   <label>Quantity & details</label><textarea id="kd" rows="3" placeholder="10 winter jackets, 5 notebook bundles…"></textarea>
+   <label>Pickup / drop-off area</label><input id="kl" placeholder="Chembur East">
+   <button class="btn b4" style="width:100%;margin-top:18px" onclick="giveKind()">Offer items</button></div>
+ </div>
+ <div class="card"><h3>Recent contributions</h3><div id="ledger"></div></div></div></section>
+
+<!-- DASHBOARD -->
+<section class="view" id="v-dash"><div class="card" style="margin-top:20px;background:linear-gradient(135deg,#14202B,#26364A);color:#fff"><span class="pill p-g" id="dbadge"></span><h2 id="dtitle" style="margin:10px 0 4px"></h2><p id="dsub" style="opacity:.7;font-size:13.5px"></p></div><div id="dbody" style="margin-top:14px"></div></section>
+</main>
+
+<nav class="dock" aria-label="Main">
+ <button id="n-home" class="on" onclick="go('home')"><b>🏠</b>Home</button>
+ <button id="n-request" onclick="go('request')"><b>💬</b>Support</button>
+ <button id="n-track" onclick="go('track')"><b>📍</b>Track</button>
+ <button id="n-donate" onclick="go('donate')"><b>💚</b>Donate</button>
+ <button id="n-dash" onclick="go('dash')"><b>📊</b>Dashboard</button>
+</nav>
+
+<div class="modal" id="rm" onclick="if(event.target===this)this.classList.remove('on')"><div class="card">
+ <div style="text-align:center;margin-bottom:12px"><div class="logo" style="margin:0 auto 8px">🤝</div><h3>HopeConnect Foundation</h3><p class="mut">Bhavna Trust · Reg. CEP/2026/088</p><span class="pill p-g" style="margin-top:8px">80G tax receipt</span></div>
+ <div class="rc" id="rcb"></div>
+ <div class="row" style="margin-top:18px;flex-wrap:nowrap"><button class="btn b4" style="flex:1" onclick="window.print()">Print / save PDF</button><button class="btn b3" onclick="$('#rm').classList.remove('on')">Close</button></div>
+</div></div>
+
+<script>
+const $=s=>document.querySelector(s),E=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const CATS={Food:['🍲','#FFF1E3','Food support','Meals and ration kits'],Education:['📚','#E7EEFF','Education','Books, fees and coaching'],Healthcare:['💊','#FFE8EA','Healthcare','Medicines and doctor visits'],Clothing:['👕','#F3E8FF','Clothing','Uniforms and warm wear'],Emergency:['🚨','#FFE3E8','Emergency','Fire, flood and crisis aid']};
+const STAGES=['Submitted','Under Review','Assigned','Completed'],VOL='Rahul Sharma';
+let S={role:'seeker',amt:1000,mode:'upi',req:[],don:[]};
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const sv=()=>{try{localStorage.setItem('hc_req',JSON.stringify(S.req));localStorage.setItem('hc_don',JSON.stringify(S.don))}catch(e){}render()};
+S.req=ld('hc_req',[
+ {id:'HC20261008',category:'Food',name:'Sunita Patel',phone:'9820112233',location:'Deonar Colony',urgency:'High',description:'Dry ration kit for a family of 5.',status:'Under Review',vol:VOL,at:'24 Oct, 10:30 AM'},
+ {id:'HC20261009',category:'Education',name:'Aakash Verma',phone:'9892001122',location:'Chembur Naka',urgency:'Medium',description:'Class 10 Science textbooks and stationery.',status:'Assigned',vol:VOL,at:'25 Oct, 2:15 PM'},
+ {id:'HC20261010',category:'Healthcare',name:'Mohammad Shaikh',phone:'9769334455',location:'Govandi West',urgency:'Emergency',description:'Discharge medicines for senior citizen father.',status:'Submitted',vol:null,at:'26 Oct, 8:00 AM'}]);
+S.don=ld('hc_don',[{id:'DON101',who:'Vikram Mehta',amount:2500,kind:'m',mode:'UPI',date:'2026-10-22'},{id:'DON102',who:'Ananya Roy',amount:1000,kind:'m',mode:'Card',date:'2026-10-24'}]);
+
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;$('#toasts').append(t);setTimeout(()=>t.remove(),2800)}
+function go(v){document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));document.querySelectorAll('.dock button').forEach(b=>b.classList.toggle('on',b.id==='n-'+v));scrollTo({top:0,behavior:'smooth'});render()}
+function setRole(r){S.role=r;toast('Switched to '+$('#role').selectedOptions[0].text.replace(/^\S+\s/,''));go('dash')}
+const urg=u=>u==='Emergency'?'p-r':u==='High'?'p-a':'p-g';
+const stp=s=>s==='Completed'?'p-g':s==='Submitted'?'p-a':'p-i';
+const reqRow=(r,extra='')=>`<div class="item"><div><span class="id">${r.id}</span> <b style="margin-left:6px">${E(r.category)}</b><p>${E(r.description)}</p></div><div style="text-align:right"><span class="pill ${stp(r.status)}">${r.status}</span>${extra}</div></div>`;
+
+function render(){
+ const done=S.req.filter(r=>r.status==='Completed').length;
+ $('#stats').innerHTML=[['10,000+','People helped'],[500+S.req.length+'+','Support requests'],['200+','Active volunteers'],['50+','Partner NGOs']].map(s=>`<div class="card stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
+ $('#cats').innerHTML=Object.entries(CATS).map(([k,c])=>`<button class="card cat" onclick="go('request');$('#rc').value='${k}'"><div class="ico" style="background:${c[1]}">${c[0]}</div><b>${c[2]}</b><p class="mut" style="margin-top:4px">${c[3]}</p></button>`).join('');
+ if($('#rc').options.length<2)Object.keys(CATS).forEach(k=>$('#rc').add(new Option(CATS[k][0]+' '+CATS[k][2],k)));
+ $('#recent').innerHTML=S.req.slice(0,3).map(r=>reqRow(r,`<p>${E(r.location)}</p>`)).join('')||'<p class="mut">No requests yet.</p>';
+ $('#tlist').innerHTML=S.req.slice(0,4).map(r=>`<div class="item" style="cursor:pointer" onclick="track('${r.id}')"><div><span class="id">${r.id}</span> <b style="margin-left:6px">${E(r.category)}</b></div><span class="pill ${stp(r.status)}">${r.status}</span></div>`).join('');
+ $('#amts').innerHTML=[500,1000,2500,5000].map(a=>`<button type="button" class="${S.amt===a?'on':''}" onclick="S.amt=${a};$('#amt').value=${a};render()">₹${a.toLocaleString('en-IN')}</button>`).join('');
+ $('#ledger').innerHTML=S.don.map(d=>`<div class="item"><div><b>${E(d.who)}</b><p>${d.date} · ${E(d.mode)}</p></div><div style="text-align:right"><b style="color:var(--g)">${d.kind==='m'?'₹'+Number(d.amount).toLocaleString('en-IN'):E(d.item)}</b><br><button class="pill p-i" onclick="receipt('${d.id}')">Receipt</button></div></div>`).join('');
+ dash();
+}
+
+function submitReq(e){e.preventDefault();
+ const r={id:'HC'+Math.floor(1e7+Math.random()*9e7),category:$('#rc').value,name:$('#rn').value,phone:$('#rp').value,location:$('#rl').value,urgency:$('#ru').value,description:$('#rd').value,status:'Submitted',vol:null,at:new Date().toLocaleString('en-IN',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})};
+ S.req.unshift(r);sv();e.target.reset();toast('Request sent · '+r.id);go('track');track(r.id)}
+
+function track(id){id=String(id).trim().toUpperCase();const r=S.req.find(x=>x.id===id),b=$('#tres');
+ if(!r){b.style.display='none';return toast('No request found with ID '+(id||'—'))}
+ const i=STAGES.indexOf(r.status),L=['Request submitted','NGO review','Volunteer assigned','Support delivered'];
+ b.style.display='block';b.dataset.id=id;
+ b.innerHTML=`<div class="row" style="justify-content:space-between"><div><span class="pill p-g">${E(r.category)}</span><h3 style="margin-top:8px">Request <span class="id">${r.id}</span></h3></div><div style="text-align:right"><span class="pill ${stp(r.status)}">${r.status}</span><p class="mut">${E(r.at)}</p></div></div>
+ <div class="stepper" style="--w:calc(${i/3} * (100% - 32px))"><i></i>${L.map((l,k)=>`<div class="st ${k<=i?'d':''}"><u>${k<i?'✓':k+1}</u>${l}</div>`).join('')}</div>
+ ${r.vol?`<p class="item" style="background:var(--gs);color:#08855C;font-weight:600;font-size:13px">🙋 Field volunteer: ${E(r.vol)}</p>`:''}
+ <p class="mut" style="margin-top:14px"><b>${E(r.name)}</b> · ${E(r.location)} · <span class="pill ${urg(r.urgency)}">${r.urgency}</span></p><p style="margin-top:8px;font-size:14px">${E(r.description)}</p>
+ <div class="row" style="margin-top:16px"><span class="mut">Demo:</span>${STAGES.map(s=>`<button class="btn b3 sm" onclick="setStatus('${r.id}','${s}')">${s}</button>`).join('')}</div>`}
+function setStatus(id,s){const r=S.req.find(x=>x.id===id);if(!r)return;r.status=s;if(s==='Assigned'&&!r.vol)r.vol=VOL;sv();track(id);toast('Status: '+s)}
+
+function dType(t){$('#dm').classList.toggle('on',t==='m');$('#dk').classList.toggle('on',t==='k');$('#fm').style.display=t==='m'?'':'none';$('#fk').style.display=t==='k'?'':'none'}
+function pay(m){S.mode=m;$('#pu').classList.toggle('on',m==='upi');$('#pc').classList.toggle('on',m==='card');$('#upi').style.display=m==='upi'?'':'none'}
+function donate(){const a=parseFloat($('#amt').value);if(!(a>0))return toast('Enter an amount above ₹0');
+ const d={id:'DON'+Math.floor(100+Math.random()*900),who:$('#dn').value||'Anonymous well-wisher',amount:a,kind:'m',mode:S.mode==='upi'?'UPI':'Card (demo)',date:new Date().toISOString().slice(0,10)};
+ S.don.unshift(d);sv();toast('Thank you! ₹'+a.toLocaleString('en-IN')+' received');receipt(d.id)}
+function giveKind(){const t=$('#kd').value.trim();if(!t)return toast('Add quantity and details');
+ S.don.unshift({id:'RES'+Math.floor(100+Math.random()*900),who:$('#dn').value||'Kind supporter',kind:'k',item:$('#kt').value+': '+t,mode:'In-kind',date:new Date().toISOString().slice(0,10)});sv();$('#kd').value='';toast('Offer submitted. We will contact you')}
+function receipt(id){const d=S.don.find(x=>x.id===id);if(!d)return;
+ $('#rcb').innerHTML=[['Receipt no.','HC-RCPT-'+d.id],['Date',d.date],['Donor',E(d.who)],['Mode',E(d.mode)],['Total',d.kind==='m'?'₹'+Number(d.amount).toLocaleString('en-IN'):E(d.item)]].map(x=>`<div><span class="mut">${x[0]}</span><b>${x[1]}</b></div>`).join('');$('#rm').classList.add('on')}
+
+function bars(o,max){return Object.entries(o).map(([k,v])=>`<div class="bar"><span>${k}</span><div><i style="width:${max?v/max*100:0}%"></i></div><b>${v}</b></div>`).join('')}
+function dash(){const R=S.role,q=S.req,H={seeker:['Support seeker','My requests','Track everything you have asked for.'],ngo:['NGO','Green Future hub','Review requests and dispatch volunteers.'],volunteer:['Volunteer','Hello, Rahul','Your field tasks and open requests nearby.'],donor:['Donor','Your impact','Contributions and 80G receipts.'],admin:['Admin','Platform overview','Analytics, users and funds.']}[R];
+ $('#dbadge').textContent=H[0];$('#dtitle').textContent=H[1];$('#dsub').textContent=H[2];let h='';
+ const stat=(a,b)=>`<div class="card stat"><b>${a}</b><span>${b}</span></div>`;
+ if(R==='seeker')h=`<div class="card"><div class="row" style="justify-content:space-between"><h3>Submitted requests</h3><button class="btn b1 sm" onclick="go('request')">New request</button></div>${q.map(r=>reqRow(r,`<br><button class="pill p-i" onclick="go('track');track('${r.id}')">View timeline</button>`)).join('')}</div>`;
+ if(R==='ngo')h=`<div class="grid g4">${stat(q.length,'Total')}${stat(q.filter(r=>/Sub|Under/.test(r.status)).length,'Pending review')}${stat(q.filter(r=>r.status==='Assigned').length,'In progress')}${stat(q.filter(r=>r.status==='Completed').length,'Completed')}</div>
+ <div class="card tbl" style="margin-top:14px"><table><tr><th>ID</th><th>Seeker</th><th>Area</th><th>Urgency</th><th>Status</th><th>Volunteer</th><th></th></tr>${q.map(r=>`<tr><td class="id">${r.id}</td><td><b>${E(r.name)}</b><br><span class="mut">${E(r.phone)}</span></td><td>${E(r.location)}</td><td><span class="pill ${urg(r.urgency)}">${r.urgency}</span></td><td><span class="pill ${stp(r.status)}">${r.status}</span></td><td>${E(r.vol||'Unassigned')}</td><td style="white-space:nowrap"><button class="btn b3 sm" onclick="setStatus('${r.id}','Assigned')">Assign</button> <button class="btn b1 sm" onclick="setStatus('${r.id}','Completed')">Done</button></td></tr>`).join('')}</table></div>`;
+ if(R==='volunteer'){const my=q.filter(r=>r.vol===VOL),open=q.filter(r=>!r.vol&&r.status!=='Completed');
+  h=`<div class="grid g2">${stat(my.filter(r=>r.status!=='Completed').length,'Active tasks')}${stat(my.filter(r=>r.status==='Completed').length,'Completed')}</div><div class="grid g2" style="margin-top:14px"><div class="card"><h3>My tasks</h3>${my.map(r=>reqRow(r,r.status!=='Completed'?`<br><button class="btn b1 sm" style="margin-top:6px" onclick="setStatus('${r.id}','Completed')">Mark done</button>`:'')).join('')||'<p class="mut" style="margin-top:10px">No tasks yet. Claim one nearby.</p>'}</div><div class="card"><h3>Open near Chembur & Deonar</h3>${open.map(r=>reqRow(r,`<br><button class="btn b3 sm" style="margin-top:6px" onclick="setStatus('${r.id}','Assigned')">Claim</button>`)).join('')||'<p class="mut" style="margin-top:10px">All requests are covered.</p>'}</div></div>`}
+ if(R==='donor')h=`<div class="card"><div class="row" style="justify-content:space-between"><h3>Donation history</h3><button class="btn b1 sm" onclick="go('donate')">Donate</button></div>${S.don.map(d=>`<div class="item"><div><b>${d.kind==='m'?'₹'+Number(d.amount).toLocaleString('en-IN'):E(d.item)}</b><p>${d.date} · ${E(d.mode)}</p></div><button class="btn b4 sm" onclick="receipt('${d.id}')">Receipt</button></div>`).join('')}</div>`;
+ if(R==='admin'){const c={},s={};Object.keys(CATS).forEach(k=>c[k]=0);STAGES.forEach(k=>s[k]=0);q.forEach(r=>{c[r.category]++;s[r.status]++});
+  const f=S.don.filter(d=>d.kind==='m').reduce((a,d)=>a+Number(d.amount),0);
+  h=`<div class="grid g4">${stat('1,248','Users')}${stat('18','Verified NGOs')}${stat('204','Volunteers')}${stat('₹'+f.toLocaleString('en-IN'),'Funds raised')}</div><div class="grid g2" style="margin-top:14px"><div class="card"><h3>Requests by category</h3>${bars(c,Math.max(1,...Object.values(c)))}</div><div class="card"><h3>Request lifecycle</h3>${bars(s,Math.max(1,...Object.values(s)))}</div></div>
+  <div class="card tbl" style="margin-top:14px"><table><tr><th>User</th><th>Role</th><th>Contact</th><th>Status</th></tr><tr><td><b>Green Future NGO</b></td><td><span class="pill p-i">NGO</span></td><td>contact@greenfuture.org</td><td><span class="pill p-g">Verified</span></td></tr><tr><td><b>Rahul Sharma</b></td><td><span class="pill p-g">Volunteer</span></td><td>rahul.vol@gmail.com</td><td><span class="pill p-g">Verified</span></td></tr><tr><td><b>Sunita Patel</b></td><td><span class="pill p-a">Seeker</span></td><td>sunita.p@gmail.com</td><td><span class="pill p-i">Standard</span></td></tr></table></div>`}
+ $('#dbody').innerHTML=h}
+render();
+</script>
+<footer class="wrap" style="text-align:center;padding:30px 0 10px"><p class="mut">A Community Engagement Project, Dept. of Computer Science, Bhavna Trust College, Deonar, Mumbai.<br>Submitted by Sujal Guhagarkar (Seat No. 22416) · Guide: Prof. Monu Singh · 2026–27</p></footer>
+</body>
+</html>
